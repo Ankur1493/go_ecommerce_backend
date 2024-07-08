@@ -1,8 +1,7 @@
 package main
 
-import "backend/testpackage"
+import "fmt"
 
 func main() {
-	testpackage.Function1()
-	testpackage.Secondmain()
+	fmt.Printf("Hello World")
 }
