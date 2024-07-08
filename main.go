@@ -16,11 +16,22 @@ func main() {
 	}
 }
 
-func getHealhStatus(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("health is completely fine")
+func getHealhStatus(w http.ResponseWriter, _ *http.Request) {
+	response := []byte("Server is up and running...")
+	_, err := w.Write(response)
+	if err != nil {
+		fmt.Println("error in payment")
+	}
 }
 
 func createPayment(w http.ResponseWriter, r *http.Request) {
-	//	fmt.Println("payment happen")
-	w.WriteHeader(200)
+	if r.Method != "POST" {
+		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		return
+	}
+	response := []byte("payment happened")
+	_, err := w.Write(response)
+	if err != nil {
+		fmt.Println("error in payment")
+	}
 }
